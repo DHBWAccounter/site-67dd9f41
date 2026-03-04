@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 50% 5%;
+    --foreground: 0 0% 98%;
+    --card: 240 40% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 40% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 330 100% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 100% 48%;
+    --secondary-foreground: 240 50% 5%;
+    --muted: 240 30% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 180 100% 48%;
+    --accent-foreground: 240 50% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 30% 20%;
+    --input: 240 30% 20%;
+    --ring: 330 100% 58%;
+    --radius: 0.75rem;
+
+    --neon-pink: 330 100% 58%;
+    --neon-cyan: 180 100% 48%;
+    --neon-purple: 280 100% 65%;
+    --dark-bg: 240 50% 5%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-orbitron), sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-exo2), sans-serif;
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 10px hsl(var(--neon-pink)),
+                 0 0 20px hsl(var(--neon-pink)),
+                 0 0 40px hsl(var(--neon-pink));
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px hsl(var(--neon-cyan)),
+                 0 0 20px hsl(var(--neon-cyan)),
+                 0 0 40px hsl(var(--neon-cyan));
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 10px hsl(var(--neon-purple)),
+                 0 0 20px hsl(var(--neon-purple)),
+                 0 0 40px hsl(var(--neon-purple));
+  }
+
+  .neon-border-pink {
+    box-shadow: 0 0 5px hsl(var(--neon-pink)),
+                0 0 10px hsl(var(--neon-pink)),
+                inset 0 0 5px hsl(var(--neon-pink) / 0.1);
+  }
+
+  .neon-border-cyan {
+    box-shadow: 0 0 5px hsl(var(--neon-cyan)),
+                0 0 10px hsl(var(--neon-cyan)),
+                inset 0 0 5px hsl(var(--neon-cyan) / 0.1);
+  }
+
+  .gradient-mesh {
+    background: 
+      radial-gradient(at 20% 30%, hsl(var(--neon-pink) / 0.15) 0%, transparent 50%),
+      radial-gradient(at 80% 70%, hsl(var(--neon-cyan) / 0.15) 0%, transparent 50%),
+      radial-gradient(at 50% 50%, hsl(var(--neon-purple) / 0.1) 0%, transparent 50%),
+      hsl(var(--background));
+  }
+
+  .circuit-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--neon-cyan) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--neon-cyan) / 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--background) / 0.5) 2px,
+      hsl(var(--background) / 0.5) 4px
+    );
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 4s linear infinite;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
