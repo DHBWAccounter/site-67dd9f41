@@ -112,7 +112,7 @@ export function Menus() {
                 button: "bg-purple-500 hover:bg-purple-500/80",
                 glow: "",
               },
-            }[menu.color];
+            }[menu.color as "primary" | "secondary" | "purple"];
 
             return (
               <div
